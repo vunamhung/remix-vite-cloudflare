@@ -1,13 +1,13 @@
 import { NextUIProvider } from '@nextui-org/react';
 import { json, LoaderFunction } from '@remix-run/cloudflare';
-import { isRouteErrorResponse, LiveReload, Outlet, Scripts, ScrollRestoration, useLoaderData, useNavigate, useRouteError } from '@remix-run/react';
+import { isRouteErrorResponse, Outlet, Scripts, ScrollRestoration, useLoaderData, useNavigate, useRouteError } from '@remix-run/react';
 import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
 import { Document } from '~/components';
-import { getUrl, isDev } from '~/utilities';
+import { useProgress } from '~/hooks';
+import { getUrl } from '~/utilities';
 import { rawFetch } from '~/utilities/fetch';
 import '~/assets/css/style.css';
-import { useProgress } from '~/hooks';
 
 export { headers } from '~/utilities/meta';
 
@@ -55,7 +55,6 @@ export default function App() {
       </NextUIProvider>
       <ScrollRestoration />
       <Scripts />
-      {isDev && <LiveReload />}
     </Document>
   );
 }

@@ -2,14 +2,14 @@ import { json } from '@remix-run/cloudflare';
 import queryString from 'query-string';
 import { omit, reject } from 'ramda';
 import { isNilOrEmpty } from 'ramda-adjunct';
-import { config, trailingSlash } from '~/utilities';
+import { trailingSlash } from '~/utilities';
 
 const init = { headers: { 'Cache-Control': 'public, max-age=300' } };
 
 export async function rawFetch(url: string, options?: { params?: object; accessToken?: string }) {
-  const uri = url?.startsWith('http') ? url : `${config.apiBaseUrl}/${trailingSlash(url)}`;
-  let query = options?.params ? '?' + queryString.stringify(reject(isNilOrEmpty)(options.params)) : '';
-  let requestInitr = options?.accessToken ? { headers: { Authorization: `Basic ${options?.accessToken}` } } : undefined;
+  const uri = url?.startsWith('http') ? url : `${import.meta.env.VITE_HOST}/wp-json/${trailingSlash(url)}`;
+  const query = options?.params ? '?' + queryString.stringify(reject(isNilOrEmpty)(options.params)) : '';
+  const requestInitr = options?.accessToken ? { headers: { Authorization: `Basic ${options?.accessToken}` } } : undefined;
 
   const response = await fetch(uri + query, requestInitr);
 
@@ -24,6 +24,7 @@ export async function getPage(slug?: string, locale = 'en') {
   let data: iRawPage;
   const options = { params: { slug: slug === 'index' ? 'home' : slug, __embed: true, acf_format: 'standard', lang: locale } };
   const [tempData]: iRawPage[] = await rawFetch('/wp/v2/pages', options);
+  // eslint-disable-next-line prefer-const
   data = tempData;
 
   if (data?.acf?.blocks) {
@@ -40,7 +41,7 @@ export async function getPage(slug?: string, locale = 'en') {
         position,
       }));
     }
-    let posts: any[] = [];
+    const posts: any[] = [];
     if (data?.acf?.blocks?.find(({ acf_fc_layout }) => ['news', 'news_center'].includes(acf_fc_layout))) {
       const data: iRawPost[] = await getPosts(locale);
       for (const { title, excerpt, link, _embedded } of data) {

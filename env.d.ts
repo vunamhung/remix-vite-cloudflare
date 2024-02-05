@@ -1,12 +1,10 @@
 /// <reference types="@remix-run/cloudflare" />
 /// <reference types="vite/client" />
 
-import type { KVNamespace } from '@cloudflare/workers-types';
+interface ImportMetaEnv {
+  readonly VITE_HOST: string;
+}
 
-declare module '@remix-run/cloudflare' {
-  interface AppLoadContext {
-    env: {
-      MY_KV: KVNamespace;
-    };
-  }
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
