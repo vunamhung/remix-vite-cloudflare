@@ -1,0 +1,23 @@
+html {
+  @apply antialiased;
+}
+.grid {
+  @apply grid-cols-1;
+  > * {
+    @apply min-w-0;
+  }
+}
+.container-fluid {
+  @apply mx-auto w-full px-4;
+}
+.rpv-default-layout__container {
+  @apply border-none;
+}
+.login {
+  background: linear-gradient(90deg, #53b697 0%, #479e9a 55.21%, #3f8e9d 100%);
+}
+body {
+  .rpv-core__textbox {
+    @apply text-center;
+  }
+}

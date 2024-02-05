@@ -1,0 +1,14 @@
+.idea
+node_modules
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+http-client.private.env.json
+
+/.cache
+/build
+.env
+
+.wrangler

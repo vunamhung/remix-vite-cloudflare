@@ -1,0 +1,20 @@
+@layer utilities {
+  .gradient {
+    background: linear-gradient(90deg, #53b697 0%, #68b5b5 100%);
+    @apply text-white border-transparent;
+  }
+  .header-shadow {
+    box-shadow: 0 8px 16px 0 rgba(1, 12, 27, 0.1);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
