@@ -1,5 +1,5 @@
+import type { LoaderFunction } from '@remix-run/cloudflare';
 import { useRef } from 'react';
-import { LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { PrefetchPageAnchors, useDelegatedAnchors } from 'remix-utils/use-delegated-anchors';
 import { Wrapper } from '~/components';

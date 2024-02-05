@@ -1,4 +1,4 @@
-import { json } from '@remix-run/node';
+import { json } from '@remix-run/cloudflare';
 import queryString from 'query-string';
 import { omit, reject } from 'ramda';
 import { isNilOrEmpty } from 'ramda-adjunct';

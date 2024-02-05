@@ -1,5 +1,5 @@
 import { NextUIProvider } from '@nextui-org/react';
-import { json, LoaderFunction } from '@remix-run/node';
+import { json, LoaderFunction } from '@remix-run/cloudflare';
 import { isRouteErrorResponse, LiveReload, Outlet, Scripts, ScrollRestoration, useLoaderData, useNavigate, useRouteError } from '@remix-run/react';
 import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
