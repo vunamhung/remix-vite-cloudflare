@@ -9,7 +9,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [
     viteAnalyze({ summaryOnly: true }) as PluginOption,
-    visualizer({ gzipSize: true }) as PluginOption,
+    visualizer({ gzipSize: true, emitFile: true }) as PluginOption,
     remix({ presets: [cloudflare()] }),
     tsconfigPaths(),
     viteEnv({
