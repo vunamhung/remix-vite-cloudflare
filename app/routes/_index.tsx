@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <Wrapper>
       <div className="container flex h-screen items-center justify-center">
-        <h1 className="text-blue-500">Welcome to FPT AI Center</h1>
+        <h1 className="text-blue-500">Welcome to Remix</h1>
       </div>
     </Wrapper>
   );

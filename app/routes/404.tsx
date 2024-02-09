@@ -1,5 +1,6 @@
 import { Wrapper } from '~/components';
 
+export const meta = () => [{ title: '404 - FPT Software AI Center' }];
 export default function NotFound() {
   return (
     <Wrapper>

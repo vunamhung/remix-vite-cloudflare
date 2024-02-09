@@ -1,4 +1,4 @@
-import { json } from '@remix-run/cloudflare';
+import { json, redirect } from '@remix-run/cloudflare';
 import queryString from 'query-string';
 import { omit, reject } from 'ramda';
 import { isNilOrEmpty } from 'ramda-adjunct';
@@ -30,7 +30,7 @@ export async function getPage(slug?: string, locale = 'en') {
   if (data?.acf?.blocks) {
     let jobs: any[] = [];
     if (data?.acf?.blocks?.find(({ acf_fc_layout }) => ['hr_page'].includes(acf_fc_layout))) {
-      const data: iRawJob[] = await getJobs(locale);
+      const data = (await getJobs(locale)) as unknown as iRawJob[];
       jobs = data.map(({ title, slug, acf: { description, department, expire, location, position } }) => ({
         title: title.rendered?.replace('&#038;', '&'),
         slug,
@@ -43,7 +43,7 @@ export async function getPage(slug?: string, locale = 'en') {
     }
     const posts: any[] = [];
     if (data?.acf?.blocks?.find(({ acf_fc_layout }) => ['news', 'news_center'].includes(acf_fc_layout))) {
-      const data: iRawPost[] = await getPosts(locale);
+      const data = (await getPosts(locale)) as unknown as iRawPost[];
       for (const { title, excerpt, link, _embedded } of data) {
         posts.push({
           title: title.rendered?.replace('&#038;', '&'),
@@ -67,27 +67,31 @@ export async function getPage(slug?: string, locale = 'en') {
     );
   }
 
-  return null;
+  return redirect('/404');
 }
 
 export async function getPosts(locale = 'en') {
   const data = await rawFetch('/wp/v2/posts', { params: { __embed: true, acf_format: 'standard', lang: locale } });
-  return data || null;
+  if (data) return json(data, init);
+  return redirect('/404');
 }
 
 export async function getPost(slug?: string, locale = 'en') {
   if (!slug) return null;
   const [data] = await rawFetch(`/wp/v2/posts`, { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });
-  return json(data, init) || null;
+  if (data) return json(data, init);
+  return redirect('/404');
 }
 
 export async function getJobs(locale = 'en') {
   const data = await rawFetch('/wp/v2/jobs', { params: { __embed: true, acf_format: 'standard', lang: locale } });
-  return data || null;
+  if (data) return json(data, init);
+  return redirect('/404');
 }
 
 export async function getJob(slug?: string, locale = 'en') {
   if (!slug) return null;
   const [data] = await rawFetch('/wp/v2/jobs', { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });
-  return json(data, init) || null;
+  if (data) return json(data, init);
+  return redirect('/404');
 }
