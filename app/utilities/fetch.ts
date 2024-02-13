@@ -1,7 +1,8 @@
-import { json, redirect } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import queryString from 'query-string';
 import { omit, reject } from 'ramda';
 import { isNilOrEmpty } from 'ramda-adjunct';
+import invariant from 'tiny-invariant';
 import { trailingSlash } from '~/utilities';
 
 const init = { headers: { 'Cache-Control': 'public, max-age=300' } };
@@ -24,8 +25,9 @@ export async function getPage(slug?: string, locale = 'en') {
   let data: iRawPage;
   const options = { params: { slug: slug === 'index' ? 'home' : slug, __embed: true, acf_format: 'standard', lang: locale } };
   const [tempData]: iRawPage[] = await rawFetch('/wp/v2/pages', options);
-  // eslint-disable-next-line prefer-const
   data = tempData;
+
+  invariant(data?.acf?.blocks, `No blocks for: /${slug}`);
 
   if (data?.acf?.blocks) {
     let jobs: any[] = [];
@@ -67,31 +69,31 @@ export async function getPage(slug?: string, locale = 'en') {
     );
   }
 
-  return redirect('/404');
+  return null;
 }
 
 export async function getPosts(locale = 'en') {
   const data = await rawFetch('/wp/v2/posts', { params: { __embed: true, acf_format: 'standard', lang: locale } });
   if (data) return json(data, init);
-  return redirect('/404');
+  return null;
 }
 
 export async function getPost(slug?: string, locale = 'en') {
   if (!slug) return null;
   const [data] = await rawFetch(`/wp/v2/posts`, { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });
   if (data) return json(data, init);
-  return redirect('/404');
+  return null;
 }
 
 export async function getJobs(locale = 'en') {
   const data = await rawFetch('/wp/v2/jobs', { params: { __embed: true, acf_format: 'standard', lang: locale } });
   if (data) return json(data, init);
-  return redirect('/404');
+  return null;
 }
 
 export async function getJob(slug?: string, locale = 'en') {
   if (!slug) return null;
   const [data] = await rawFetch('/wp/v2/jobs', { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });
   if (data) return json(data, init);
-  return redirect('/404');
+  return null;
 }
