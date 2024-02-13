@@ -17,6 +17,7 @@
     "@remix-run/cloudflare": "^2.6.0",
     "@remix-run/cloudflare-pages": "^2.6.0",
     "@remix-run/react": "^2.6.0",
+    "@unpic/react": "^0.1.10",
     "is-mobile": "^4.0.0",
     "isbot": "^4.1.0",
     "miniflare": "^3.20231030.4",
