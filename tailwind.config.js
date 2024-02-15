@@ -11,6 +11,10 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.js',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Inter', ...fontFamily.sans],
+      body: fontFamily.sans,
+    },
     gridAutoFit: {
       1: spacing[1],
       7: spacing[7],

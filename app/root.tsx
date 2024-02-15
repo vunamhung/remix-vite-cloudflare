@@ -7,6 +7,9 @@ import { Document } from '~/components';
 import { useProgress } from '~/hooks';
 import { getUrl } from '~/utilities';
 import { rawFetch } from '~/utilities/fetch';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
 import '~/assets/css/style.css';
 
 export { headers } from '~/utilities/meta';
@@ -65,7 +68,7 @@ export function ErrorBoundary() {
   if (isRouteErrorResponse(error)) {
     return (
       <Document title={`${error.status} ${error.statusText}`}>
-        <div className="prose container flex h-screen min-w-full items-center justify-center">
+        <div className="container prose flex h-screen min-w-full items-center justify-center">
           <div>
             <h1>
               {error.status} {error.statusText}
@@ -78,7 +81,7 @@ export function ErrorBoundary() {
   } else if (error instanceof Error) {
     return (
       <Document title="Error">
-        <div className="prose container flex h-screen min-w-full items-center justify-center">
+        <div className="container prose flex h-screen min-w-full items-center justify-center">
           <div>
             <h1>Error</h1>
             <p>{error.message}</p>
