@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "patch-package",
     "build": "remix vite:build",
+    "partytown": "partytown copylib public/~partytown",
     "deploy": "wrangler pages deploy ./build/client",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
@@ -13,12 +14,12 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.9.1",
     "@fontsource/inter": "^5.0.16",
     "@nextui-org/react": "^2.2.9",
-    "@remix-run/cloudflare": "^2.6.0",
-    "@remix-run/cloudflare-pages": "^2.6.0",
-    "@remix-run/react": "^2.6.0",
-    "@unpic/react": "^0.1.10",
+    "@remix-run/cloudflare": "^2.7.2",
+    "@remix-run/cloudflare-pages": "^2.7.2",
+    "@remix-run/react": "^2.7.2",
     "is-mobile": "^4.0.0",
     "isbot": "^4.1.0",
     "miniflare": "^3.20231030.4",
@@ -35,7 +36,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240208.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
-    "@remix-run/dev": "^2.6.0",
+    "@remix-run/dev": "^2.7.2",
     "@tailwindcss/typography": "^0.5.10",
     "@types/nprogress": "^0.2.3",
     "@types/ramda": "^0.29.10",
