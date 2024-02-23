@@ -1,14 +1,15 @@
 import type { ReactNode } from 'react';
+import { Partytown } from '@builder.io/partytown/react';
 import { Links, Meta } from '@remix-run/react';
 
-export function Document({ children, title }: { children: ReactNode; title?: string }) {
+export function Document({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/images/favicon.ico" />
-        {title ? <title>{title}</title> : null}
+        <Partytown debug={true} forward={['dataLayer.push']} />
         <Meta />
         <Links />
       </head>

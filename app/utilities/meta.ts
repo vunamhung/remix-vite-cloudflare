@@ -6,7 +6,7 @@ export const meta: MetaFunction<any> = ({ data }) => SEO(data);
 
 export function SEO(data: iPage) {
   return [
-    { title: data?.yoast_head_json?.title },
+    { title: data?.yoast_head_json?.title || 'Error' },
     { name: 'description', content: data?.yoast_head_json?.description },
     { name: 'og:locale', content: data?.yoast_head_json?.og_locale },
     { name: 'og:type', content: data?.yoast_head_json?.og_type },
