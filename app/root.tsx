@@ -65,15 +65,30 @@ export default function App() {
 export function ErrorBoundary() {
   const error = useRouteError();
 
+  // Log the error to the console
+  console.error(error);
+
   if (isRouteErrorResponse(error)) {
+    const title = `${error.status} ${error.statusText}`;
+    let message;
+    switch (error.status) {
+      case 401:
+        message = 'Oops! Looks like you tried to visit a page that you do not have access to.';
+        break;
+      case 404:
+        message = 'Oops! Looks like you tried to visit a page that does not exist.';
+        break;
+      default:
+        message = JSON.stringify(error.data, null, 2);
+        break;
+    }
+
     return (
-      <Document title={`${error.status} ${error.statusText}`}>
+      <Document title={title}>
         <div className="container prose flex h-screen min-w-full items-center justify-center">
           <div>
-            <h1>
-              {error.status} {error.statusText}
-            </h1>
-            <p>{error.data}</p>
+            <h1>{title}</h1>
+            <p>{message}</p>
           </div>
         </div>
       </Document>
