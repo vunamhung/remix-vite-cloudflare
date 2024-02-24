@@ -11,7 +11,7 @@ export const loader: LoaderFunction = async ({ params: { slug } }) => await getP
 
 export default function Page() {
   const data = useLoaderData<iPage>();
-  let ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useDelegatedAnchors(ref);
 
   useRevalidateOnFocus();

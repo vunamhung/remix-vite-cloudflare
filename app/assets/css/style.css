@@ -1,4 +1,8 @@
 @import 'tailwindcss/base.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/700.css';
+@import 'base/font.css';
 @import 'elements/base.css';
 @import 'elements/typo.css';
 @import 'elements/skeleton.css';

@@ -3,6 +3,8 @@ import type { ClassValue } from 'clsx';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+export * from './globalState';
+
 export const isDev = process.env.NODE_ENV === 'development';
 
 export function cn(...inputs: ClassValue[]) {

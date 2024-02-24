@@ -7,9 +7,6 @@ import { Document, ErrorBoundary as GeneralErrorBoundary } from '~/components';
 import { useProgress } from '~/hooks';
 import { getUrl } from '~/utilities';
 import { rawFetch } from '~/utilities/fetch';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/700.css';
 import '~/assets/css/style.css';
 
 export { headers, meta } from '~/utilities/meta';
@@ -62,10 +59,8 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary() {
-  return (
-    <Document>
-      <GeneralErrorBoundary />
-    </Document>
-  );
-}
+export const ErrorBoundary = () => (
+  <Document>
+    <GeneralErrorBoundary />
+  </Document>
+);

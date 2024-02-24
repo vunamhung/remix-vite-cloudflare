@@ -12,7 +12,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Inter', ...fontFamily.sans],
+      sans: ['Inter', 'Inter Fallback', ...fontFamily.sans],
       body: fontFamily.sans,
     },
     gridAutoFit: {
