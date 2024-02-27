@@ -1,0 +1,37 @@
+.main-menu {
+  a {
+    @apply relative block font-semibold text-sm;
+  }
+  & > ul {
+    @apply flex flex-wrap gap-x-8;
+    & > li > a {
+      @apply py-6 uppercase hover:text-primary-500 font-heading;
+    }
+  }
+  ul li {
+    @apply relative inline-block;
+    &:hover > ul.sub-menu {
+      transform: scaleY(1);
+      @apply z-10 opacity-100 visible;
+    }
+  }
+  ul.sub-menu {
+    transform: scaleY(0);
+    @apply absolute p-4 opacity-0 bg-black top-[100%] min-w-[190px] -z-10 shadow transition-all duration-500 w-max invisible origin-top;
+    li {
+      @apply block;
+      a {
+        @apply relative pl-0;
+      }
+      ul.sub-menu {
+        @apply left-[100%] right-auto top-0 ml-2;
+      }
+      ul.sub-menu li ul {
+        @apply left-[100%] right-auto;
+      }
+    }
+    a {
+      @apply font-sans hover:pl-1 text-white py-2;
+    }
+  }
+}

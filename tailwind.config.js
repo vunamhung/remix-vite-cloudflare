@@ -35,12 +35,6 @@ module.exports = {
       container: {
         center: true,
         padding: spacing[6],
-        screens: {
-          sm: '100%',
-          md: '640px',
-          lg: '960px',
-          xl: '1600px',
-        },
       },
       screens: {
         dlg: { max: '1023px' },
@@ -106,5 +100,6 @@ module.exports = {
       );
     }),
     require('@tailwindcss/typography'),
+    require('@tailwindcss/forms', { strategy: 'class' }),
   ],
 };
