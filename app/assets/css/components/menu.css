@@ -5,7 +5,7 @@
   & > ul {
     @apply flex flex-wrap gap-x-8;
     & > li > a {
-      @apply py-6 uppercase hover:text-primary-500 font-heading;
+      @apply py-6 uppercase hover:text-primary-500;
     }
   }
   ul li {
