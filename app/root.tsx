@@ -23,8 +23,8 @@ export const loader = async ({ request: { headers } }: LoaderFunctionArgs) => {
 
   const menu = await promiseHash({
     primary: http0.get<iMenu>('/menus/v1/menus/primary'),
-    // footer: http0.get('/menus/v1/menus/footer'),
-    // socials: http0.get('/menus/v1/menus/socials'),
+    // footer: http0.get<iMenu>('/menus/v1/menus/footer'),
+    // socials: http0.get<iMenu>('/menus/v1/menus/socials'),
   });
 
   return json(
