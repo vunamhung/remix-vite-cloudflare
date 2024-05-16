@@ -1,15 +1,10 @@
 const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
-const { nextui } = require('@nextui-org/react');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    // './node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js',
-    './node_modules/@nextui-org/theme/dist/**/*.js',
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
       sans: ['Inter', 'Inter Fallback', ...fontFamily.sans],
@@ -31,6 +26,32 @@ module.exports = {
         warning: colors.yellow,
         info: colors.blue,
         critical: colors.red,
+        primary: {
+          50: '#f0faf6',
+          100: '#e4f7ef',
+          200: '#bce8d3',
+          300: '#9adbb8',
+          400: '#5bc27f',
+          500: '#28a745',
+          600: '#21963b',
+          700: '#167d2b',
+          800: '#0e631e',
+          900: '#084a13',
+          950: '#03300a',
+        },
+        secondary: {
+          50: '#fefff2',
+          100: '#fdffe6',
+          200: '#fbffc2',
+          300: '#f7ff9c',
+          400: '#edff4f',
+          500: '#e3ff04',
+          600: '#c0e605',
+          700: '#93bf02',
+          800: '#6c9902',
+          900: '#497301',
+          950: '#2a4a01',
+        },
       },
       container: {
         center: true,
@@ -87,7 +108,6 @@ module.exports = {
     },
   },
   plugins: [
-    nextui(),
     plugin(({ matchUtilities, theme, addVariant }) => {
       addVariant('child', '&>*');
       matchUtilities(

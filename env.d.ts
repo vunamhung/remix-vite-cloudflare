@@ -1,10 +1,14 @@
 /// <reference types="@remix-run/cloudflare" />
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly VITE_HOST: string;
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV: 'development' | 'production';
+      RESEND_API_KEY: string;
+      HOST: string;
+    }
+  }
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
+export {};

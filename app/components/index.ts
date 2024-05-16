@@ -1,6 +1,6 @@
-export * from './Document';
-export * from './Wrapper';
-export * from './Logo';
-export * from './TheHeader';
-export * from './TheFooter';
-export * from './ErrorBoundary';
+export { Document } from './Document';
+export { Wrapper } from './Wrapper';
+export { Logo } from './Logo';
+export { TheHeader } from './TheHeader';
+export { TheFooter } from './TheFooter';
+export { ErrorBoundary } from './ErrorBoundary';

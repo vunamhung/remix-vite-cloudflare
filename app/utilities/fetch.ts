@@ -7,7 +7,7 @@ import { trailingSlash } from '~/utilities';
 const init = { headers: { 'Cache-Control': 'public, max-age=300' } };
 
 export async function rawFetch(url: string, options?: { params?: object; accessToken?: string }) {
-  const uri = url?.startsWith('http') ? url : `${import.meta.env.VITE_HOST}/wp-json/${trailingSlash(url)}`;
+  const uri = url?.startsWith('http') ? url : `${process.env.HOST}/wp-json/${trailingSlash(url)}`;
   const query = options?.params ? '?' + queryString.stringify(reject(isNilOrEmpty)(options.params)) : '';
   const requestInitr = options?.accessToken ? { headers: { Authorization: `Basic ${options?.accessToken}` } } : undefined;
 

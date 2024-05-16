@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { render } from '@react-email/render';
 import { z } from 'zod';
-import { email, resendApiKey } from '~/utilities/contants';
+import { email } from '~/utilities/contants';
 
 export async function sendEmail({ react, ...options }: Props) {
   const payload = {
@@ -14,7 +14,7 @@ export async function sendEmail({ react, ...options }: Props) {
     method: 'POST',
     body: JSON.stringify(payload),
     headers: {
-      Authorization: `Bearer ${resendApiKey}`,
+      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
   });

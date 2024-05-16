@@ -1,6 +1,5 @@
-import { NextUIProvider } from '@nextui-org/react';
 import { json, LoaderFunction } from '@remix-run/cloudflare';
-import { Outlet, Scripts, ScrollRestoration, useLoaderData, useNavigate } from '@remix-run/react';
+import { Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
 import { Document, ErrorBoundary as GeneralErrorBoundary } from '~/components';
@@ -45,14 +44,11 @@ export const loader: LoaderFunction = async ({ request: { headers } }) => {
 
 export default function App() {
   useProgress();
-  const navigate = useNavigate();
   const settings = useLoaderData<iSettings>();
 
   return (
     <Document>
-      <NextUIProvider navigate={navigate}>
-        <Outlet context={settings} />
-      </NextUIProvider>
+      <Outlet context={settings} />
       <ScrollRestoration />
       <Scripts />
     </Document>
