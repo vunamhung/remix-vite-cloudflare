@@ -37,7 +37,8 @@ export default defineConfig({
     }),
     tsconfigPaths(),
     viteEnv({
-      RESEND_API_KEY: undefined,
+      VITE_RESEND_API_KEY: undefined,
+      VITE_HOST: undefined,
     }),
     /*VitePluginRadar({
       analytics: {
