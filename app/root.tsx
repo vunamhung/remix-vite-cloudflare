@@ -5,7 +5,7 @@ import { promiseHash } from 'remix-utils/promise';
 import { Document, ErrorBoundary as GeneralErrorBoundary } from '~/components';
 import { useProgress } from '~/hooks';
 import { getUrl } from '~/utilities';
-import { rawFetch } from '~/utilities/fetch';
+import { http0 } from '~/utilities/.server';
 import '~/assets/css/style.css';
 
 export { headers, meta } from '~/utilities/meta';
@@ -18,9 +18,9 @@ export const loader: LoaderFunction = async ({ request: { headers } }) => {
   const isDesktop = !isMobile;
 
   const menu = await promiseHash({
-    primary: rawFetch('/menus/v1/menus/primary'),
-    footer: rawFetch('/menus/v1/menus/footer'),
-    socials: rawFetch('/menus/v1/menus/socials'),
+    primary: http0.get<iMenu>('/menus/v1/menus/primary'),
+    // footer: http0.get('/menus/v1/menus/footer'),
+    // socials: http0.get('/menus/v1/menus/socials'),
   });
 
   return json(
@@ -30,12 +30,9 @@ export const loader: LoaderFunction = async ({ request: { headers } }) => {
       isTablet,
       isDesktop,
       menu: {
-        // @ts-ignore
-        primary: menu?.primary?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
-        // @ts-ignore
-        footer: menu?.footer?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
-        // @ts-ignore
-        socials: menu?.socials?.items?.map(({ url }) => ({ url })),
+        primary: menu?.primary?.data?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
+        // footer: menu?.footer?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
+        // socials: menu?.socials?.items?.map(({ url }) => ({ url })),
       },
     },
     { headers: { 'Cache-Control': 'public, max-age=300' } },

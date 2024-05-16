@@ -1,6 +1,6 @@
 import { useLoaderData } from '@remix-run/react';
 import { Wrapper } from '~/components';
-import { getPage } from '~/utilities/fetch';
+import { getPage } from '~/utilities/.server';
 
 export const loader = async () => await getPage('home');
 
