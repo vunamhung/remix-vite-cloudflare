@@ -4,7 +4,7 @@ import { http0 } from '~/utilities/.server';
 
 const init = { headers: { 'Cache-Control': 'public, max-age=300' } };
 
-export async function getPage(slug?: string, locale = 'en') {
+export async function getPage(slug: string, locale = 'en') {
   const { data } = await http0.get<iRawPage[]>('/wp/v2/pages', { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });
 
   if (data?.[0]?.acf?.blocks) {
