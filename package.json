@@ -4,6 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "build:icons": "icons build -i ./svg-icons -o ./app/assets/icons --optimize",
     "build": "remix vite:build",
     "partytown": "partytown copylib public/~partytown",
     "deploy": "wrangler pages deploy ./build/client",
@@ -49,6 +50,7 @@
     "@cloudflare/workers-types": "^4.20240512.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@remix-run/dev": "^2.9.2",
+    "@sly-cli/sly": "^1.10.0",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
     "@types/nprogress": "^0.2.3",
@@ -75,6 +77,7 @@
     "remix-flat-routes": "^0.6.5",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-visualizer": "^5.12.0",
+    "svg-icons-cli": "^0.0.8",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
