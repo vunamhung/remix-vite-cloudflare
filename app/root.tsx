@@ -12,7 +12,7 @@ import '~/assets/css/style.css';
 
 export { headers, meta } from '~/utilities/meta';
 
-export const links: LinksFunction = () => [{ rel: 'preload', href: '/icons/sprite.svg', as: 'image', type: 'image/svg+xml' }];
+export const links: LinksFunction = () => [{ rel: 'preload', href: '/images/sprite.svg', as: 'image', type: 'image/svg+xml' }];
 
 export const loader = async ({ request: { headers } }: LoaderFunctionArgs) => {
   const ua = headers.get('user-agent') as string;
