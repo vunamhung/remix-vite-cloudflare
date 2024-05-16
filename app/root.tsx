@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import { json, LoaderFunction } from '@remix-run/cloudflare';
 import { Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
 import md from 'is-mobile';
@@ -45,7 +46,9 @@ export default function App() {
 
   return (
     <Document>
-      <Outlet context={settings} />
+      <MantineProvider>
+        <Outlet context={settings} />
+      </MantineProvider>
       <ScrollRestoration />
       <Scripts />
     </Document>

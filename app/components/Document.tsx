@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Partytown } from '@builder.io/partytown/react';
+import { ColorSchemeScript } from '@mantine/core';
 import { Links, Meta } from '@remix-run/react';
 
 export function Document({ children }: { children: ReactNode }) {
@@ -12,6 +13,7 @@ export function Document({ children }: { children: ReactNode }) {
         <Partytown debug={true} forward={['dataLayer.push']} />
         <Meta />
         <Links />
+        <ColorSchemeScript />
       </head>
       <body>{children}</body>
     </html>
