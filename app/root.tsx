@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { MantineProvider } from '@mantine/core';
 import { json } from '@remix-run/cloudflare';
 import { Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
@@ -11,6 +11,8 @@ import { http0 } from '~/utilities/.server';
 import '~/assets/css/style.css';
 
 export { headers, meta } from '~/utilities/meta';
+
+export const links: LinksFunction = () => [{ rel: 'preload', href: '/icons/sprite.svg', as: 'image', type: 'image/svg+xml' }];
 
 export const loader = async ({ request: { headers } }: LoaderFunctionArgs) => {
   const ua = headers.get('user-agent') as string;

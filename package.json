@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build:icons": "icons build -i ./svg-icons -o ./app/assets/icons --optimize",
+    "build:icons": "icons build -i ./svg-icons -o ./public/icons --optimize",
     "build": "remix vite:build",
     "partytown": "partytown copylib public/~partytown",
     "deploy": "wrangler pages deploy ./build/client",
