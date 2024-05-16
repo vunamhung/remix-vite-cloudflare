@@ -1,5 +1,5 @@
 import { NavLink } from '@remix-run/react';
-import { Logo } from '~/components/Logo';
+import { Logo } from '~/components';
 import { useSettings } from '~/hooks';
 import { cn } from '~/utilities';
 
@@ -16,6 +16,7 @@ export const TheHeader = () => {
 
 const Navigation = () => {
   const { menu } = useSettings();
+
   return (
     <nav className="hidden lg:block">
       <ul className="flex flex-wrap gap-x-6">
