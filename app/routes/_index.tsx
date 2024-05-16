@@ -7,7 +7,7 @@ export const loader = async () => await getPage('home');
 export { headers, meta } from '~/utilities/meta';
 
 export default function Index() {
-  const data = useLoaderData<iPage>();
+  const data = useLoaderData<typeof loader>();
 
   return (
     <Wrapper>

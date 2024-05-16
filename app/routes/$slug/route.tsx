@@ -1,4 +1,4 @@
-import type { LoaderFunction } from '@remix-run/cloudflare';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { useRef } from 'react';
 import { useLoaderData } from '@remix-run/react';
 import { PrefetchPageAnchors, useDelegatedAnchors } from 'remix-utils/use-delegated-anchors';
@@ -7,10 +7,10 @@ import { useRevalidateOnFocus } from '~/hooks';
 import { getPage } from '~/utilities/.server';
 
 export { headers, meta } from '~/utilities/meta';
-export const loader: LoaderFunction = async ({ params: { slug } }) => await getPage(slug);
+export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => await getPage(slug);
 
 export default function Page() {
-  const data = useLoaderData<iPage>();
+  const data = useLoaderData<typeof loader>();
   const ref = useRef<HTMLDivElement>(null);
   useDelegatedAnchors(ref);
 
