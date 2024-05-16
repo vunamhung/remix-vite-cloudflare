@@ -21,11 +21,7 @@ const Navigation = () => {
       <ul className="flex flex-wrap gap-x-6">
         {menu?.primary?.map(({ title, path }, index) => (
           <li key={index}>
-            <NavLink
-              className={({ isActive, isPending }) => cn('hover:underline dark:text-white', isActive && 'underline')}
-              prefetch="intent"
-              to={path}
-            >
+            <NavLink className={({ isActive }) => cn('hover:underline dark:text-white', isActive && 'underline')} prefetch="intent" to={path}>
               {title}
             </NavLink>
           </li>

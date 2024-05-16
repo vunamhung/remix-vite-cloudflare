@@ -1,3 +1,5 @@
 import { useRouteLoaderData } from '@remix-run/react';
 
-export const useSettings = () => useRouteLoaderData<iSettings>('root');
+export function useSettings() {
+  return useRouteLoaderData('root') as iSettings;
+}
