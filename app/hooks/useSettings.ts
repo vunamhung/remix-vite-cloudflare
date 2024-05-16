@@ -1,3 +1,3 @@
-import { useOutletContext } from '@remix-run/react';
+import { useOutletContext, useRouteLoaderData } from '@remix-run/react';
 
-export const useSettings = () => useOutletContext<iSettings>();
+export const useSettings = () => useRouteLoaderData<iSettings>('root');

@@ -2,7 +2,6 @@ import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { useRef } from 'react';
 import { useLoaderData } from '@remix-run/react';
 import { PrefetchPageAnchors, useDelegatedAnchors } from 'remix-utils/use-delegated-anchors';
-import { Wrapper } from '~/components';
 import { useRevalidateOnFocus } from '~/hooks';
 import { getPage } from '~/utilities/.server';
 
@@ -17,12 +16,10 @@ export default function Page() {
   useRevalidateOnFocus();
 
   return (
-    <Wrapper>
-      <PrefetchPageAnchors>
-        <div ref={ref} className="container flex h-screen items-center justify-center">
-          <h1 className="text-blue-500">{data?.title}</h1>
-        </div>
-      </PrefetchPageAnchors>
-    </Wrapper>
+    <PrefetchPageAnchors>
+      <div ref={ref} className="container flex h-screen items-center justify-center">
+        <h1 className="text-blue-500">{data?.title}</h1>
+      </div>
+    </PrefetchPageAnchors>
   );
 }
