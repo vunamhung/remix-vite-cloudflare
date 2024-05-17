@@ -20,7 +20,7 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
   const isDesktop = !isMobile;
 
   const data = await promiseHash({
-    svg: http0.get<string>(`${url}/images/sprite.svg`, { headers: { 'Cache-Control': 'public, max-age=3600s' } }),
+    svg: http0.get<string>(`${url}/images/sprite.svg`, { headers: { 'Cache-Control': 'public, max-age=3600' } }),
     primaryMenu: http0.get<iMenu>('/menus/v1/menus/primary'),
     // footer: http0.get<iMenu>('/menus/v1/menus/footer'),
     // socials: http0.get<iMenu>('/menus/v1/menus/socials'),
