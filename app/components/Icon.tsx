@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 import { cn } from '~/utilities';
-import { IconName } from '../../public/icons/name';
+import { IconName } from '../../public/images/name';
 
 export const Icon = ({ name, size = 'font', className, children, ...props }: SVGProps<SVGSVGElement> & { name: IconName; size?: Size }) => {
   if (children) {
@@ -14,7 +14,7 @@ export const Icon = ({ name, size = 'font', className, children, ...props }: SVG
 
   return (
     <svg {...props} className={cn(sizeClassName[size], 'inline self-center', className)}>
-      <use href={`/images/sprite.svg#${name}`} />
+      <use href={`#${name}`} />
     </svg>
   );
 };

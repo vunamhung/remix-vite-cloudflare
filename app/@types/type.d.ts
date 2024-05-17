@@ -107,6 +107,7 @@ interface iSettings {
   isPhone: boolean;
   isTablet: boolean;
   isDesktop: boolean;
+  svg: string;
   menu: {
     primary: iPrimaryMenuItem[];
     footer: iPrimaryMenuItem[];
