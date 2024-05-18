@@ -2,7 +2,7 @@ import { json } from '@remix-run/cloudflare';
 import { omit } from 'ramda';
 import { http0 } from '~/utilities/.server';
 
-const init = { headers: { 'Cache-Control': 'public, max-age=300' } };
+const init = { headers: { 'Cache-Control': 'private, max-age=300' } };
 
 export async function getPage(slug?: string, locale = 'en') {
   const { data } = await http0.get<iRawPage[]>('/wp/v2/pages', { params: { slug, __embed: true, acf_format: 'standard', lang: locale } });

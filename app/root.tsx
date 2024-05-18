@@ -43,6 +43,8 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
   );
 };
 
+export const shouldRevalidate = () => false;
+
 export default function App() {
   useProgress();
   const { svg } = useLoaderData<typeof loader>();
