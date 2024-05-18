@@ -1,10 +1,10 @@
 import { useCallback, useRef } from 'react';
 
 export const useFocus = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   const focusElement = useCallback(() => {
-    if (ref.current) {
+    if (ref?.current) {
       ref.current.focus();
     }
   }, []);
