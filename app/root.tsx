@@ -1,3 +1,4 @@
+import '~/assets/css/style.css';
 import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { MantineProvider } from '@mantine/core';
 import { json } from '@remix-run/cloudflare';
@@ -8,7 +9,6 @@ import { Document, ErrorBoundary as GeneralErrorBoundary, TheFooter, TheHeader }
 import { useProgress } from '~/hooks';
 import { getUrl } from '~/utilities';
 import { http0 } from '~/utilities/.server';
-import '~/assets/css/style.css';
 
 export { headers, meta } from '~/utilities/meta';
 
@@ -20,7 +20,7 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
   const isDesktop = !isMobile;
 
   const data = await promiseHash({
-    svg: http0.get<string>(`${url}/images/sprite.svg`, { headers: { 'Cache-Control': 'public, max-age=3600' } }),
+    svg: http0.get<string>(`${new URL(url).origin}/images/sprite.svg`, { headers: { 'Cache-Control': 'private, max-age=3600' } }),
     primaryMenu: http0.get<iMenu>('/menus/v1/menus/primary'),
     // footer: http0.get<iMenu>('/menus/v1/menus/footer'),
     // socials: http0.get<iMenu>('/menus/v1/menus/socials'),
@@ -39,7 +39,7 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
         // socials: menu?.socials?.items?.map(({ url }) => ({ url })),
       },
     },
-    { headers: { 'Cache-Control': 'public, max-age=300' } },
+    { headers: { 'Cache-Control': 'private, max-age=300' } },
   );
 };
 
