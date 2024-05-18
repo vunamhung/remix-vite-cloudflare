@@ -15,12 +15,12 @@ export const TheHeader = () => {
 };
 
 const Navigation = () => {
-  const data = useRootLoaderData();
+  const root = useRootLoaderData();
 
   return (
     <nav className="hidden lg:block">
       <ul className="flex flex-wrap gap-x-6">
-        {data?.menu?.primary?.map(({ title, path }, index) => (
+        {root?.menu?.primary?.map(({ title, path }, index) => (
           <li key={index}>
             <NavLink className={({ isActive }) => cn('hover:underline dark:text-white', isActive && 'underline')} prefetch="intent" to={path}>
               {title}
