@@ -101,23 +101,3 @@ interface iMenuItem {
     urdu?: string;
   };
 }
-
-interface iSettings {
-  isMobile: boolean;
-  isPhone: boolean;
-  isTablet: boolean;
-  isDesktop: boolean;
-  svg: string;
-  menu: {
-    primary: iPrimaryMenuItem[];
-    footer: iPrimaryMenuItem[];
-    socials: Array<{ url: string }>;
-  };
-  lastUpdate: string;
-}
-
-interface iPrimaryMenuItem {
-  title: string;
-  path: string;
-  child?: iPrimaryMenuItem[];
-}
