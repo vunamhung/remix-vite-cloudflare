@@ -2,7 +2,7 @@ import '~/assets/css/style.css';
 import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { MantineProvider } from '@mantine/core';
 import { json } from '@remix-run/cloudflare';
-import { Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
+import { Outlet, Scripts, ScrollRestoration, useLoaderData, useRouteLoaderData } from '@remix-run/react';
 import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
 import { Document, ErrorBoundary as GeneralErrorBoundary, TheFooter, TheHeader } from '~/components';
@@ -11,7 +11,8 @@ import { getUrl } from '~/utilities';
 import { http0 } from '~/utilities/.server';
 
 export { headers, meta } from '~/utilities/meta';
-
+export const shouldRevalidate = () => false;
+export const useRootLoaderData = () => useRouteLoaderData<typeof loader>('root');
 export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) => {
   const ua = headers.get('user-agent') as string;
   const isMobile = md({ ua, tablet: true });
@@ -42,8 +43,6 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
     { headers: { 'Cache-Control': 'private, max-age=300' } },
   );
 };
-
-export const shouldRevalidate = () => false;
 
 export default function App() {
   useProgress();

@@ -1,6 +1,6 @@
 import { NavLink } from '@remix-run/react';
 import { Logo } from '~/components';
-import { useSettings } from '~/hooks';
+import { useRootLoaderData } from '~/root';
 import { cn } from '~/utilities';
 
 export const TheHeader = () => {
@@ -15,12 +15,12 @@ export const TheHeader = () => {
 };
 
 const Navigation = () => {
-  const { menu } = useSettings();
+  const data = useRootLoaderData();
 
   return (
     <nav className="hidden lg:block">
       <ul className="flex flex-wrap gap-x-6">
-        {menu?.primary?.map(({ title, path }, index) => (
+        {data?.menu?.primary?.map(({ title, path }, index) => (
           <li key={index}>
             <NavLink className={({ isActive }) => cn('hover:underline dark:text-white', isActive && 'underline')} prefetch="intent" to={path}>
               {title}
