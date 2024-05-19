@@ -2,7 +2,7 @@ import '~/assets/css/style.css';
 import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
 import { MantineProvider } from '@mantine/core';
 import { json } from '@remix-run/cloudflare';
-import { Outlet, Scripts, ScrollRestoration, useLoaderData, useRouteLoaderData } from '@remix-run/react';
+import { Outlet, Scripts, ScrollRestoration, useRouteLoaderData } from '@remix-run/react';
 import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
 import { Document, ErrorBoundary as GeneralErrorBoundary, TheFooter, TheHeader } from '~/components';
@@ -13,7 +13,7 @@ import { http0 } from '~/utils/.server';
 export { headers, meta } from '~/utils/meta';
 export const shouldRevalidate = () => false;
 export const useRootLoaderData = () => useRouteLoaderData<typeof loader>('root');
-export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) => {
+export const loader = async ({ request: { headers } }: LoaderFunctionArgs) => {
   const ua = headers.get('user-agent') as string;
   const isMobile = md({ ua, tablet: true });
   const isPhone = md({ ua });
@@ -21,7 +21,6 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
   const isDesktop = !isMobile;
 
   const data = await promiseHash({
-    svg: http0.get<string>(`${new URL(url).origin}/images/sprite.svg`, { headers: { 'Cache-Control': 'private, max-age=3600' } }),
     primaryMenu: http0.get<iMenu>('/menus/v1/menus/primary'),
     // footer: http0.get<iMenu>('/menus/v1/menus/footer'),
     // socials: http0.get<iMenu>('/menus/v1/menus/socials'),
@@ -33,7 +32,6 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
       isPhone,
       isTablet,
       isDesktop,
-      svg: data.svg.data,
       menu: {
         primary: data?.primaryMenu?.data?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
         // footer: menu?.footer?.items?.map(({ url, title }) => ({ title, path: getUrl(url) })),
@@ -46,12 +44,10 @@ export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) 
 
 export default function App() {
   useProgress();
-  const { svg } = useLoaderData<typeof loader>();
 
   return (
     <Document>
       <MantineProvider>
-        <div className="child:hidden" dangerouslySetInnerHTML={{ __html: svg }} />
         <TheHeader />
         <Outlet />
         <TheFooter />
