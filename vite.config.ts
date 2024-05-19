@@ -1,6 +1,5 @@
 import type { PluginOption } from 'vite';
 import { vitePlugin as remix, cloudflareDevProxyVitePlugin as remixCloudflareDevProxy } from '@remix-run/dev';
-import { vite } from 'million/compiler';
 import { remixDevTools } from 'remix-development-tools';
 import { flatRoutes } from 'remix-flat-routes';
 import viteAnalyze from 'rollup-plugin-analyzer';
@@ -15,12 +14,6 @@ export default defineConfig({
     remixDevTools(),
     viteAnalyze({ summaryOnly: true }) as PluginOption,
     visualizer({ gzipSize: true, emitFile: true }) as PluginOption,
-    vite({
-      auto: {
-        threshold: 0.1,
-        // skip: ["useBadHook", /badVariable/g],
-      },
-    }),
     remixCloudflareDevProxy(),
     remix({
       ignoredRouteFiles: ['**/*'],
