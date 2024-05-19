@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-import { cn } from '~/utilities';
+import { cn } from '~/utils';
 import { IconName } from '../../public/images/name';
 
 export const Icon = ({ name, size = 'font', className, children, ...props }: SVGProps<SVGSVGElement> & { name: IconName; size?: Size }) => {

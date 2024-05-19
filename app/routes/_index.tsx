@@ -1,10 +1,10 @@
 import { useLoaderData } from '@remix-run/react';
 import { Icon } from '~/components';
-import { getPage } from '~/utilities/.server';
+import { getPage } from '~/utils/.server';
 
 export const loader = async () => await getPage('home');
 
-export { headers, meta } from '~/utilities/meta';
+export { headers, meta } from '~/utils/meta';
 
 export default function Index() {
   const data = useLoaderData<typeof loader>();

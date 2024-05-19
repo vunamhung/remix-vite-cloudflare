@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react';
 import { Logo } from '~/components';
 import { useRootLoaderData } from '~/root';
-import { cn } from '~/utilities';
+import { cn } from '~/utils';
 
 export const TheHeader = () => {
   return (

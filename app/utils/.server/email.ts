@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { render } from '@react-email/render';
 import { z } from 'zod';
-import { email, env } from '~/utilities/contants';
+import { email, env } from '~/utils/contants';
 
 export async function sendEmail({ react, ...options }: Props) {
   const payload = {

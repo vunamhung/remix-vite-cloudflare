@@ -3,9 +3,9 @@ import { useRef } from 'react';
 import { useLoaderData } from '@remix-run/react';
 import { PrefetchPageAnchors, useDelegatedAnchors } from 'remix-utils/use-delegated-anchors';
 import { useRevalidateOnFocus } from '~/hooks';
-import { getPage } from '~/utilities/.server';
+import { getPage } from '~/utils/.server';
 
-export { headers, meta } from '~/utilities/meta';
+export { headers, meta } from '~/utils/meta';
 export const loader = async ({ params: { slug } }: LoaderFunctionArgs) => await getPage(slug);
 
 export default function Page() {

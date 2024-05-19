@@ -1,7 +1,7 @@
 import type { ClassValue } from 'clsx';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { env } from '~/utilities/contants';
+import { env } from '~/utils/contants';
 
 export { globalState } from './globalState';
 

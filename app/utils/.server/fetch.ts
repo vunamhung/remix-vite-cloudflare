@@ -1,6 +1,6 @@
 import { json } from '@remix-run/cloudflare';
 import { omit } from 'ramda';
-import { http0 } from '~/utilities/.server';
+import { http0 } from '~/utils/.server';
 
 const init = { headers: { 'Cache-Control': 'private, max-age=300' } };
 

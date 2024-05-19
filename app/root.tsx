@@ -7,10 +7,10 @@ import md from 'is-mobile';
 import { promiseHash } from 'remix-utils/promise';
 import { Document, ErrorBoundary as GeneralErrorBoundary, TheFooter, TheHeader } from '~/components';
 import { useProgress } from '~/hooks';
-import { getUrl } from '~/utilities';
-import { http0 } from '~/utilities/.server';
+import { getUrl } from '~/utils';
+import { http0 } from '~/utils/.server';
 
-export { headers, meta } from '~/utilities/meta';
+export { headers, meta } from '~/utils/meta';
 export const shouldRevalidate = () => false;
 export const useRootLoaderData = () => useRouteLoaderData<typeof loader>('root');
 export const loader = async ({ request: { headers, url } }: LoaderFunctionArgs) => {

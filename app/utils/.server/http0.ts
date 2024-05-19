@@ -2,7 +2,7 @@ import xior from 'xior';
 import dedupePlugin from 'xior/plugins/dedupe';
 // import errorCachePlugin from 'xior/plugins/error-cache';
 import throttlePlugin from 'xior/plugins/throttle';
-import { env } from '~/utilities/contants';
+import { env } from '~/utils/contants';
 
 export const http0 = xior.create({ baseURL: env.HOST + '/wp-json' });
 // http0.plugins.use(errorCachePlugin());
