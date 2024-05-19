@@ -7,6 +7,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import viteEnv from 'vite-plugin-environment';
 import { VitePluginRadar } from 'vite-plugin-radar';
+import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -36,6 +37,19 @@ export default defineConfig({
       },
     }),
     tsconfigPaths(),
+    svgr({
+      svgrOptions: {
+        plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
+        icon: true,
+        memo: true,
+        expandProps: 'end',
+        svgoConfig: {
+          floatPrecision: 2,
+          plugins: [{ name: 'preset-default', params: { overrides: { removeViewBox: false } } }],
+        },
+      },
+      include: '**/*.svg?react',
+    }),
     viteEnv({
       VITE_RESEND_API_KEY: undefined,
       VITE_HOST: undefined,

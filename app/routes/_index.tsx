@@ -1,5 +1,5 @@
 import { useLoaderData } from '@remix-run/react';
-import { Accessibility } from '~/icons';
+import Accessibility from '~/icons/accessibility.svg?react';
 import { getPage } from '~/utils/.server';
 
 export const loader = async () => await getPage('home');
@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div className="container flex h-screen items-center justify-center">
       <h1 className="text-blue-500">
-        Welcome to Remix <Accessibility />
+        Welcome to Remix <Accessibility className="inline text-red-500" />
       </h1>
     </div>
   );

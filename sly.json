@@ -3,8 +3,8 @@
   "libraries": [
     {
       "name": "@radix-ui/icons",
-      "directory": "./svg-icons",
-      "postinstall": ["npm", "run", "build:icons"],
+      "directory": "./app/icons",
+      "postinstall": [],
       "transformers": []
     }
   ]
