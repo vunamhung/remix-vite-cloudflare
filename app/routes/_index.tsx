@@ -8,10 +8,15 @@ import { getDb } from '~/utils/.server';
 export { headers, meta } from '~/utils/meta';
 
 export async function loader({ context }: LoaderFunctionArgs) {
-  const db = getDb(context);
-  const resourceList = await db.select().from(resources).all();
+  try {
+    const db = getDb(context);
+    const resourceList = await db.select().from(resources).all();
 
-  return json({ resourceList });
+    return json({ resourceList });
+  } catch (err) {
+    console.log(err);
+    return json(err, 500);
+  }
 }
 
 export async function action({ request, context }: ActionFunctionArgs) {
