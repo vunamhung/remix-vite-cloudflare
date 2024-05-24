@@ -14,7 +14,9 @@
     "typecheck": "tsc",
     "drizzle:update": "drizzle-kit generate",
     "db:migrate:local": "npm run drizzle:update && wrangler d1 migrations apply db --local",
-    "db:migrate": "npm run drizzle:update && wrangler d1 migrations apply db --remote"
+    "db:migrate": "npm run drizzle:update && wrangler d1 migrations apply db --remote",
+    "db:studio:local": "cross-env LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
+    "db:studio:prod": "drizzle-kit studio"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.2",
@@ -73,6 +75,8 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "better-sqlite3": "^10.0.0",
+    "cross-env": "^7.0.3",
     "drizzle-kit": "^0.21.4",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^9.1.0",

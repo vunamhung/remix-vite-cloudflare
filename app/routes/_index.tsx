@@ -9,7 +9,7 @@ export { headers, meta } from '~/utils/meta';
 
 export async function loader({ context }: LoaderFunctionArgs) {
   const db = getDb(context);
-  const resourceList = await db.select({ id: resources.id, title: resources.title, href: resources.href }).from(resources).orderBy(resources.id);
+  const resourceList = await db.select().from(resources).all();
 
   return json({ resourceList });
 }
