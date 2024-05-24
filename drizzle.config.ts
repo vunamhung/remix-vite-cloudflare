@@ -11,12 +11,13 @@ const config = process.env.LOCAL_DB_PATH
     })
   : defineConfig({
       dialect: 'sqlite',
-      driver: 'd1',
+      driver: 'd1-http',
       schema: './app/drizzle/schema.ts',
       out: './app/drizzle/migrations',
       dbCredentials: {
-        wranglerConfigPath: new URL('wrangler.toml', import.meta.url).pathname,
-        dbName: 'db',
+        accountId: process.env.CF_ACCOUNT_ID as string,
+        databaseId: process.env.CF_D1_ID as string,
+        token: process.env.CF_TOKEN as string,
       },
     });
 
