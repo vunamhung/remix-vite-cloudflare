@@ -1,3 +1,5 @@
-kv_namespaces = [
-  { id = "MY_KV", binding="MY_KV" }
-]
+[[d1_databases]]
+binding = "DB"
+database_name = "db"
+database_id = "1831207f-49f3-43af-af15-2c48c1211dfc"
+migrations_dir="./app/drizzle/migrations"
