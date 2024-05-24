@@ -5,6 +5,8 @@ import { Form, useLoaderData } from '@remix-run/react';
 import { resources } from '~/drizzle/schema';
 import { getDb } from '~/utils/.server';
 
+export { headers, meta } from '~/utils/meta';
+
 export async function loader({ context }: LoaderFunctionArgs) {
   const db = getDb(context);
   const resourceList = await db.select({ id: resources.id, title: resources.title, href: resources.href }).from(resources).orderBy(resources.id);
@@ -28,7 +30,7 @@ export default function Index() {
 
   return (
     <div className="container">
-      <h1 className="text-blue-500">Welcome to Remix (with Drizzle, Vite and Cloudflare D1)</h1>
+      <h1 className="mb-4 text-blue-500">Welcome to Remix (with Drizzle, Vite and Cloudflare D1)</h1>
       <ul>
         {resourceList.map((resource) => (
           <li key={resource.id}>
