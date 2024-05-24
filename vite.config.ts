@@ -51,8 +51,8 @@ export default defineConfig({
       include: '**/*.svg?react',
     }),
     viteEnv({
-      VITE_RESEND_API_KEY: undefined,
-      VITE_HOST: undefined,
+      // VITE_RESEND_API_KEY: undefined,
+      // VITE_HOST: undefined,
     }),
     /*VitePluginRadar({
       analytics: {
