@@ -1,5 +1,5 @@
 {
-  "name": "remix-vite-cloudflare",
+  "name": "remix-vite-cloudflare-d1-drizzle",
   "private": true,
   "sideEffects": false,
   "type": "module",
