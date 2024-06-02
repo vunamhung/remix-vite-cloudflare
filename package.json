@@ -30,6 +30,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.1.4",
     "framer-motion": "^11.2.6",
+    "fuzzysort": "^3.0.1",
     "is-mobile": "^4.0.0",
     "isbot": "^5.1.7",
     "miniflare": "^3.20240512.0",
