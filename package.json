@@ -63,6 +63,7 @@
     "@remix-run/dev": "^2.9.2",
     "@sly-cli/sly": "^1.10.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
     "@testing-library/react": "^15.0.7",
