@@ -40,7 +40,7 @@ export default defineConfig({
     svgr({
       svgrOptions: {
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
-        icon: true,
+        icon: false,
         memo: true,
         expandProps: 'end',
         svgoConfig: {
