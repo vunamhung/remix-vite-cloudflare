@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <div className="container flex h-screen items-center justify-center">
       <h1 className="text-blue-500">
-        Welcome to Remix <Accessibility className="inline text-red-500" />
+        Welcome to Remix <Accessibility className="inline h-8 text-red-500" />
       </h1>
     </div>
   );
